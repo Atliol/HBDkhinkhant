@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #f06, #f79);
+      font-family: 'Times New Roman', Times, serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .photo-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .photo-container img {
+      width: 150px;
+      height: 150px;
+      border-radius: 10px;
+      border: 3px solid white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .wishes-container {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .wishes-container p {
+      margin: 5px 0;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fall {
+      0% {
+        top: -10%;
+        left: calc(100% * var(--random-x));
+        opacity: 1;
+      }
+      100% {
+        top: 110%;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Happy Birthday Khin Khant Khant Zaw!</h1>
+    <div class="photo-container">
+      <img src="./img/k2.jpg" alt="Photo 2">
+      <img src="./img/k3.jpg" alt="Photo 3">
+      <img src="./img/k1.jpg" alt="Photo 1">
+    </div>
+    <div class="wishes-container">
+      <p>🎉happy birthday par Ma Gyi Khin Khant</p>
+      <p>💖 မွေးနေ့မှာပျော်ရွင်ပြီး မိဘအားကိုးရသော သမီးလိမ္မာလေးဖြစ်ပါစေဗျာ</p>
+      <p>🎂 မွေးနေ့မှစ၍ နောက်နှစ်ပေါင်းများစွာထိ ကျန်းမာပျော်ရွှင်သောဘဝကိုပိုင်ဆိုင်နိင်ပါစေဗျာ</p>
+    </div>
+  </div>
+
+  <!-- Add music -->
+  <audio id="birthday-music" autoplay loop>
+    <source src="./7490803067663813906_3.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Create falling confetti
+    for (let i = 0; i < 100; i++) {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.setProperty('--random-x', Math.random());
+      confetti.style.left = Math.random() * 100 + '%';
+      confetti.style.animationDelay = Math.random() * 5 + 's';
+      confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+      document.body.appendChild(confetti);
+    }
+  </script>
+</body>
+</html>
