@@ -14,30 +14,32 @@
       align-items: center;
       height: 100vh;
       background: linear-gradient(135deg, #f06, #f79);
-      font-family: 'Times New Roman', Times, serif;
+      font-family: Arial, sans-serif;
       color: white;
       overflow: hidden;
     }
 
     .container {
       text-align: center;
+      max-width: 90%;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       animation: fadeIn 2s ease-in-out;
     }
 
     .photo-container {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 10px;
       margin-top: 20px;
+      flex-wrap: wrap;
     }
 
     .photo-container img {
-      width: 150px;
-      height: 150px;
+      width: 120px;
+      height: 120px;
       border-radius: 10px;
       border: 3px solid white;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -45,7 +47,7 @@
 
     .wishes-container {
       margin-top: 20px;
-      font-size: 1.2rem;
+      font-size: 1rem;
       text-align: center;
     }
 
@@ -62,13 +64,42 @@
       animation: fall 5s linear infinite;
     }
 
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
+    .music-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: white;
+      background-color: #ff6b6b;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    .music-button:hover {
+      background-color: #ff4c4c;
+    }
+
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #fff;
+      opacity: 0.8;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
 
     @keyframes fadeIn {
@@ -97,18 +128,22 @@
   <div class="container">
     <h1>Happy Birthday Khin Khant Khant Zaw!</h1>
     <div class="photo-container">
-      <img src="./img/k2.jpg" alt="Photo 2">
-      <img src="./img/k3.jpg" alt="Photo 3">
-      <img src="./img/k1.jpg" alt="Photo 1">
+      <img src="./img/k2.jpg" alt="Photo 1">
+      <img src="./img/k3.jpg" alt="Photo 2">
+      <img src="./img/k1.jpg" alt="Photo 3">
     </div>
     <div class="wishes-container">
       <p>🎉happy birthday par Ma Gyi Khin Khant</p>
       <p>💖 မွေးနေ့မှာပျော်ရွင်ပြီး မိဘအားကိုးရသော သမီးလိမ္မာလေးဖြစ်ပါစေဗျာ</p>
       <p>🎂 မွေးနေ့မှစ၍ နောက်နှစ်ပေါင်းများစွာထိ ကျန်းမာပျော်ရွှင်သောဘဝကိုပိုင်ဆိုင်နိင်ပါစေဗျာ</p>
-    </div>
-  </div>
 
-  <!-- Add music -->
+    </div>
+    <button class="music-button" id="music-toggle">Pause Music</button>
+  </div>
+  <footer>
+    Created with by <a href="https://github.com/Atliol" target="_blank">myokyawthu</a>
+  </footer>
+  <!-- Background Music -->
   <audio id="birthday-music" autoplay loop>
     <source src="./7490803067663813906_3.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -125,6 +160,20 @@
       confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
       document.body.appendChild(confetti);
     }
+
+    // Music Toggle Button
+    const music = document.getElementById('birthday-music');
+    const musicToggle = document.getElementById('music-toggle');
+
+    musicToggle.addEventListener('click', () => {
+      if (music.paused) {
+        music.play();
+        musicToggle.textContent = 'Pause Music';
+      } else {
+        music.pause();
+        musicToggle.textContent = 'Play Music';
+      }
+    });
   </script>
 </body>
 </html>
